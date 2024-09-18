@@ -34,7 +34,7 @@ Source: Wikipedia, "API"​
 
 ---
 
-# Relationships
+# Pairs
 
 <div grid="~ cols-2 grid-rows-2 gap-5" >
 
@@ -132,19 +132,17 @@ Source: Postman, "2023 State of the API Report"​​​
 layout: center
 ---
 
-# Enhancing Communication
+# Communication Issues between Pairs
 
 <div class="flex justify-center items-center h-full">
 <img src="/ibet.png" class="m-5 h-80 p-2 rounded bg-white" />
 </div>
 
-
 ---
 layout: center
 ---
 
-# Speak common language
-<!-- Speak common language -->
+# Find a common language
 
 <br>
 
@@ -156,6 +154,166 @@ layout: center
 
 <div class="flex justify-center h-full">
 <img src="/asyncapi.png" class="m-5 h-20 p-2 rounded bg-white" />
+</div>
+
+</div>
+
+---
+
+# OpenAPI Specification
+
+<br>
+<br>
+
+- Technology agnostic standard to describe Rest APIs
+- Formerly Swagger, OpenAPI as of version 3
+- Written as JSON or YAML
+- Great tooling for code and documentation generation
+- [https://openapi.tools/](https://openapi.tools/)
+
+---
+clicks: 5
+---
+
+# OpenAPI Specification
+
+<div grid="~ cols-2 gap-4">
+
+<div>
+
+```yaml {all|1|2-4|5-6|7-22|23-}  {maxHeight:'400px'} 
+openapi: 3.0.3
+info:
+  title: Recipes API
+  ...
+servers:
+- url: http://localhost:8080
+paths:
+  /recipes:
+    get:
+      summary: List all recipes
+      ...
+      responses:
+        ...
+        "200":
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+        ...
+components:
+  schemas:
+    Recipe:
+      type: object
+      ...
+```
+</div>
+
+<div class="p-3">
+
+<v-clicks at="0">
+
+- **Openapi:** Spec Version
+- **Info:** General API information as metadata
+- **Servers:** Connectivity information about target servers
+- **Paths:** Paths to the endpoints with their expected request, response and errors. 
+- **Components:** Holds the schemas for the request, response and errors for referencing
+
+</v-clicks>
+
+</div>
+
+</div>
+
+
+---
+
+# AsyncAPI Specification
+
+<br>
+<br>
+
+- Technology agnostic standard to describe message-driven APIs​
+- An adaptation of the OpenAPI specification
+- Written as JSON or YAML
+- Protocols: AMQP, HTTP, JMS, Kafka, but not only
+- [https://www.asyncapi.com/tools](https://www.asyncapi.com/tools)
+
+
+---
+clicks: 5
+---
+
+# AsyncAPI Specification
+
+<div grid="~ cols-2 gap-4">
+
+<div>
+
+```yaml {all|1|2-4|6-10|12-24|26-}  {maxHeight:'400px'} 
+asyncapi: 2.0.0
+info:
+  title: Ping Service
+  ...
+
+servers:
+  localhost:
+    url: localhost:9092
+    protocol: kafka
+    protocolVersion: '1.0.0'
+
+channels:
+  ping.topic:
+    description: Kafka topic for ping messages
+    publish:
+      operationId: pingSent
+      message:
+        $ref : '#/components/messages/Ping'
+  pong.topic:
+    description: Kafka topic for pong messages
+    subscribe:
+      operationId: pongReceived
+      message:
+        $ref : '#/components/messages/Pong'      
+
+components:
+  messages:
+    Ping:
+      name: Ping
+      ...
+      payload:
+        $ref: '#/components/schemas/PingPayload'
+    Pong:
+      name: Pong
+      ...
+      payload:
+        $ref: '#/components/schemas/PongPayload'
+
+  schemas:
+    PingPayload:
+      type: object
+      ...
+    PongPayload:
+      type: object       
+      ...
+```
+</div>
+
+<div class="p-3">
+
+<v-clicks at="0">
+
+- **Asyncapi:** Spec Version
+- **Info:** Metadata information about the API
+- **Servers:** Connectivity information about servers (i.e. Kafka brokers)
+- **Channels:** Messages exchange between provider and consumer
+- **Components:** Defines the reusable objects such as schemas or messages which could be referenced.
+
+</v-clicks>
+
 </div>
 
 </div>
@@ -196,17 +354,20 @@ layout: center
 
 <!-- API Spec define the functions and the expected results of an API -->
 
+
 ---
-layout: statement
+layout: center
 ---
 
 # Development Process
-Let's build an API
 
+<div class="flex justify-center items-center h-full">
+<img src="/nicolascage_pedropascal.gif" class="m-5 h-80 p-2 rounded bg-white" />
+</div>
 
 ---
 
-# Recipes API
+# Let's build an API - Recipes Demo
 
 <div grid="~ cols-2 gap-2" m="-t-2">
 
@@ -242,6 +403,17 @@ Let's build an API
 </div>
 
 
+---
+
+# API Development - Code First
+
+Communicate API specification once coding has been done
+
+<br>
+
+<div class="flex justify-center h-full">
+<img src="/api-code-first.drawio.png" class="m-5 h-70 p-2 rounded bg-white" />
+</div>
 
 ---
 
@@ -249,39 +421,24 @@ Let's build an API
 
 Communicate API specification once coding has been done
 
-<div grid="~ cols-2 gap-10">
+<br>
 
-<div>
+| **Advantages** | **Disadvantages** |
+| ------------- |-------------|
+| Focus on coding | Late communication with the consumer |
+| Flexibility to change the API design | Does not enable development in parallel      |
+|  | Annotations      |
+
+---
+
+# API Development - API First
+
+Communicate API specification before coding. Prioritizes API design over implementation.
 
 <br>
 
-<div v-click="1">
-
-- **Advantages:**
-  - Focus on coding
-  - Flexibility to change the API design
-
-</div>
-
-<div v-click="2">
-
-- **Disadvantages:**
-  - Late communication with the consumer
-  - Does not enable development in parallel
-  - Annotations
-</div>
-
-</div>
-
-<div>
-
-<br>
-<br>
-
-<img src="/api-code-first.drawio.png" class="h-50 rounded bg-white" />
-
-</div>
-
+<div class="flex justify-center h-full">
+<img src="/api-api-first.drawio.png" class="m-5 h-70 p-2 rounded bg-white" />
 </div>
 
 ---
@@ -290,40 +447,13 @@ Communicate API specification once coding has been done
 
 Communicate API specification before coding. Prioritizes API design over implementation.
 
-<div grid="~ cols-2 gap-10">
-
-<div>
-
 <br>
 
-<div v-click="1">
-
-- **Advantages:**
-  - Early communication with the consumer
-  - Documentation thought ahead
-  - Enables development in parallel
-
-</div>
-
-<div v-click="2">
-
-- **Disadvantages:**
-  - Less flexibility to change the API design
-  - Sometimes bureaucratic for providers
-</div>
-
-</div>
-
-<div>
-
-<br>
-<br>
-
-<img src="/api-api-first.drawio.png" class="h-54 rounded bg-white" />
-
-</div>
-
-</div>
+| **Advantages** | **Disadvantages** |
+| ------------- |-------------|
+| Early communication with the consumer | Less flexibility to change the API design |
+| Documentation thought ahead | Sometimes bureaucratic for providers |
+| Enables development in parallel |  |
 
 ---
 
@@ -368,7 +498,7 @@ Consumer dictates the expected API behavior to the provider
 
 ---
 
-# Summary
+# Recap
 
 |     |     |
 | --- | --- |
@@ -377,6 +507,20 @@ Consumer dictates the expected API behavior to the provider
 | When to use Consumer first? | Provider should conform to consumer needs <br> API consumer and provider test their applications independently <br> To sync provider and consumer deployments <br> Small number of consumers |
 | When to mix & match? | When API first alone is not sufficient to match consumer needs |
 
+---
+layout: center
+---
+
+# Are same approaches applicable to AsyncAPI?
+
+<div v-click="1" class="flex justify-center items-center">
+
+- Inspired by OpenAPI
+- Code First and API First
+- Pact Messaging support
+- [https://www.asyncapi.com/tools](https://www.asyncapi.com/tools)
+
+</div>
 
 ---
 layout: statement
