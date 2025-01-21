@@ -20,7 +20,7 @@ presenter: false
 
 ::right::
 
-<img src="background2.png" class="rounded-lg w-80 border-2 border-gray-400 abs-tr mt-0 mr-0 opacity-90"/>
+<img src="/background2.png" class="rounded-lg w-80 border-2 border-gray-400 abs-tr mt-0 mr-0 opacity-90"/>
 
 ---
 
