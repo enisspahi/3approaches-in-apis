@@ -3,7 +3,7 @@ title: 'Three approaches in API Development'
 layout: two-cols
 theme: seriph
 author: Enis Spahi
-presenter: false
+presenter: true
 ---
 
 <br>
@@ -172,13 +172,13 @@ layout: statement
 
 <div>
 
-#### Client
+#### Consumer 🙂
 
 </div>
 
 <div>
 
-#### Server
+#### Provider 🙂
 
 </div>
 
@@ -266,7 +266,7 @@ layout: statement
 
 # OpenAPI Specification
 
-<div grid="~ cols-2 gap-0">
+<div class="grid grid-cols-2 md:grid-cols-[2fr_3fr] gap-0">
 
 <div>
 <br>
@@ -599,23 +599,12 @@ layout: statement
 
 # Message-driven APIs?
 
-<!-- <br>
-
-<div v-click="1" class="flex justify-center items-center">
-
-- Inspired by OpenAPI
-- Code First and API First
-- Pact Messaging support
-- [https://www.asyncapi.com/tools](https://www.asyncapi.com/tools)
-
-</div> -->
-
 ---
 
 
 # AsyncAPI Specification
 
-<div grid="~ cols-2 gap-0">
+<div class="grid grid-cols-2 md:grid-cols-[2fr_3fr] gap-0">
 
 <div>
 <br>
