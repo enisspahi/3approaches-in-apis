@@ -1,14 +1,26 @@
 ---
 title: 'Three approaches in API Development'
-layout: cover
+layout: two-cols
 theme: seriph
-# background: background.png
 author: Enis Spahi
-presenter: true
+presenter: false
 ---
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # **Three approaches in API Development**
 <br>
-Enis Spahi
+
+### Enis Spahi
+
+::right::
+
+<img src="background2.png" class="rounded-lg w-80 border-2 border-gray-400 abs-tr mt-0 mr-0 opacity-90"/>
 
 ---
 
@@ -154,7 +166,7 @@ layout: statement
 
 ---
 
-# Recipes API
+# Use Case: What should I cook?
 
 <div grid="~ cols-2 gap-2" m="-t-2">
 
@@ -396,7 +408,7 @@ layout: statement
 
 ---
 
-# Code First
+# 1. Code First
 
 Communicate API specification once coding has been done
 
@@ -408,7 +420,7 @@ Communicate API specification once coding has been done
 
 ---
 
-# Code First
+# 1. Code First
 
 Communicate API specification once coding has been done
 
@@ -421,8 +433,8 @@ Communicate API specification once coding has been done
 **Advantages:**
 - Focus on coding
 - Flexibility to change the API design
-- Client code generation
 - Documentation generation
+- Client code generation
 
 </div>
 
@@ -461,7 +473,7 @@ layout: statement
 
 ---
 
-# API First
+# 2. API First
 
 Communicate API specification before coding. Prioritizes API design over implementation.
 
@@ -473,7 +485,7 @@ Communicate API specification before coding. Prioritizes API design over impleme
 
 ---
 
-# API First
+# 2. API First
 
 Communicate API specification before coding. Prioritizes API design over implementation.
 
@@ -525,7 +537,7 @@ layout: statement
 
 ---
 
-# Consumer First
+# 3. Consumer First
 
 Consumer dictates the expected API behavior to the provider.
 
