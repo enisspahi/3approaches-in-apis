@@ -731,7 +731,7 @@ layout: center
 </div>
 <div class="flex justify-center items-center">
 
-[https://github.com/enisspahi/3approaches-apis](https://github.com/enisspahi/3approaches-apis)
+[https://github.com/enisspahi/3approaches-in-apis](https://github.com/enisspahi/3approaches-in-apis)
 </div>
 
 

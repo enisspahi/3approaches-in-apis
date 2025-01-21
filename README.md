@@ -17,4 +17,4 @@
 [https://github.com/enisspahi/async-api-example](https://github.com/enisspahi/async-api-example)
 
 ## **Slides**
-[https://enisspahi.github.io/3approaches-apis](https://enisspahi.github.io/3approaches-apis)
+[https://enisspahi.github.io/3approaches-in-apis](https://enisspahi.github.io/3approaches-in-apis)
