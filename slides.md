@@ -285,6 +285,7 @@ layout: statement
 - Technology agnostic standard to describe Rest APIs
 - Formerly Swagger, OpenAPI as of version 3
 - Written as JSON or YAML
+- Self documenting
 - Great tooling for code and documentation generation
 - [https://openapi.tools/](https://openapi.tools/)
 </div>
@@ -603,7 +604,7 @@ Consumer dictates the expected API behavior to the provider.
 <div v-click="1">
 
 **Disadvantages:**
-- Conflicting expections of multiple consumers
+- Conflicting expections on multiple consumers
 </div>
 
 </div>
