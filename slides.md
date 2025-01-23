@@ -372,6 +372,7 @@ components:
 
 
 - Common Language for API discovery
+  - OpenAPI/Swagger for REST APIs
 - Foundation for tooling
   - Code generation
   - Documentation
@@ -577,6 +578,39 @@ Consumer dictates the expected API behavior to the provider.
 </div>
 
 ---
+
+# 3. Consumer First
+
+Consumer dictates the expected API behavior to the provider.
+
+<div grid="~ cols-2 gap-10">
+
+<div>
+
+<br>
+
+**Advantages:**
+- Test Driven API Development
+- Independent consumer and provider testing
+- "Can I deploy?" challenge solved
+
+</div>
+
+<div>
+
+<br>
+
+<div v-click="1">
+
+**Disadvantages:**
+- Conflicting expections of multiple consumers
+</div>
+
+</div>
+
+</div>
+
+---
 layout: statement
 ---
 
@@ -589,9 +623,9 @@ layout: statement
 |     |     |
 | --- | --- |
 | When to use Code first? | Provider initially focuses on coding speed <br> Flexibility to change the design |
-| When to use API first? | API design over implementation <br> Early communication with the consumer → Documentation <br> Utilize code generation <br> Large number of consumers |
+| When to use API first? | API design over implementation <br> Early communication with the consumer → Documentation <br> Utilize code generation <br> Large number of consumers <br> Published Language |
 | When to use Consumer first? | Provider should conform to consumer needs <br> API consumer and provider test their applications independently <br> To sync provider and consumer deployments <br> Small number of consumers |
-| When to mix & match? | When API first alone is not sufficient to match consumer needs |
+| When to mix & match? | Best of both worlds |
 
 ---
 layout: statement
@@ -653,13 +687,13 @@ servers:
     protocolVersion: '1.0.0'
 
 channels:
-  ping.topic:
+  outgoing.ping:
     description: Kafka topic for ping messages
     publish:
       operationId: pingSent
       message:
         $ref : '#/components/messages/Ping'
-  pong.topic:
+  incoming.pong:
     description: Kafka topic for pong messages
     subscribe:
       operationId: pongReceived
